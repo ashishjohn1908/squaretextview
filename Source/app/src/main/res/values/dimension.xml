@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Add dimension as per the project need-->
+
+    <!--Dimension used for padding or Margin-->
+    <dimen name="gap_1dp">1dp</dimen>
+    <dimen name="gap_2dp">2dp</dimen>
+
+    <!--Dimension used for Font Size-->
+    <dimen name="font_8sp">8sp</dimen>
+    <dimen name="font_12sp">12sp</dimen>
+</resources>

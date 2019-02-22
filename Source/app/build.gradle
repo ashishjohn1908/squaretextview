@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId "com.app"
+
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+
+        versionCode Integer.valueOf("" + appVersionCode).intValue()
+        versionName "${appVersionName}"
+
+    }
+    signingConfigs {
+        signingconfig_release {
+        }
+        signingconfig_debug {
+            keyAlias 'DebugAlias'
+            keyPassword 'Alias1234'
+            storeFile file('../../../Keys/debug_key.jks')
+            storePassword 'pass1234'
+        }
+    }
+    buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+        }
+        release {
+
+            minifyEnabled true
+            debuggable false
+            useProguard true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:$rootProject.ext.support_version"
+    implementation project(':library')
+
+    apply from: "../artifacts.gradle"
+}
